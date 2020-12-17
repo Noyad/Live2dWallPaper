@@ -1,0 +1,869 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "b_s_x"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "b_s_y"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "",
+			"Name": "yumao_x"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "",
+			"Name": "yumao_Y"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "",
+			"Name": "ht_dis"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "",
+			"Name": "e_ht_X"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "",
+			"Name": "e_ht_Y"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左眼　开闭"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "",
+			"Name": "e_b_x"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "",
+			"Name": "e_b_y"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "",
+			"Name": "参数138"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左眼　微笑"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右眼"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右眼　微笑"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "眼球 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "眼球 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "左眉　左右"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "右眉　左右"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "嘴部　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "嘴巴　张开和闭合"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "脸颊"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "",
+			"Name": "呼吸 替代"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "摇动　前发"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "摇动　侧发"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "摇动　后发"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[0]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[1]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[2]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[3]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[4]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[5]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[6]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[7]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[8]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_10_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[9]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_11_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[10]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_12_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[11]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_13_l_t_h",
+			"GroupId": "ParamGroup",
+			"Name": "[12]l_t_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[0]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[1]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[2]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[3]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[4]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[5]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_l_f_h",
+			"GroupId": "ParamGroup2",
+			"Name": "[6]l_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[0]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[1]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[2]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[3]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[4]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[5]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[6]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[7]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_m_h",
+			"GroupId": "ParamGroup3",
+			"Name": "[8]m_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[0]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[1]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[2]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[3]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[4]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[5]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[6]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[7]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[8]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_10_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[9]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_11_r_f_h",
+			"GroupId": "ParamGroup4",
+			"Name": "[10]r_f_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[0]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[1]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[2]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[3]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[4]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[5]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[6]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[7]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_l_b_h",
+			"GroupId": "ParamGroup5",
+			"Name": "[8]l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[0]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[1]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[2]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[3]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[4]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[5]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[6]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[7]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_r_b_h",
+			"GroupId": "ParamGroup6",
+			"Name": "[8]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[4]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[5]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_r_b_h",
+			"GroupId": "ParamGroup7",
+			"Name": "[6]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[0]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[1]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[2]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[3]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[4]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[5]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_l_l_b_h",
+			"GroupId": "ParamGroup8",
+			"Name": "[6]l_l_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[0]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[1]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[2]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[3]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[4]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[5]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_hc",
+			"GroupId": "ParamGroup9",
+			"Name": "[6]r_hc"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[0]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[1]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[2]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[3]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[4]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[5]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[6]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[7]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_9_r_b_h2",
+			"GroupId": "ParamGroup10",
+			"Name": "[8]r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[0]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[1]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[2]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[3]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[4]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[5]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_r_r_b_h2",
+			"GroupId": "ParamGroup11",
+			"Name": "[6]r_r_b_h"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[0]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[1]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[2]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[3]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[4]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[5]mh_shadow"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_mh_shadow",
+			"GroupId": "ParamGroup12",
+			"Name": "[6]mh_shadow"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "l_t_h"
+		},
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "l_f_h"
+		},
+		{
+			"Id": "ParamGroup3",
+			"GroupId": "",
+			"Name": "m_h"
+		},
+		{
+			"Id": "ParamGroup4",
+			"GroupId": "",
+			"Name": "r_f_h"
+		},
+		{
+			"Id": "ParamGroup5",
+			"GroupId": "",
+			"Name": "l_b_h"
+		},
+		{
+			"Id": "ParamGroup6",
+			"GroupId": "",
+			"Name": "r_b_h"
+		},
+		{
+			"Id": "ParamGroup7",
+			"GroupId": "",
+			"Name": "r_r_b_h"
+		},
+		{
+			"Id": "ParamGroup8",
+			"GroupId": "",
+			"Name": "l_l_b_h"
+		},
+		{
+			"Id": "ParamGroup9",
+			"GroupId": "",
+			"Name": "r_hc"
+		},
+		{
+			"Id": "ParamGroup10",
+			"GroupId": "",
+			"Name": "r_b_h"
+		},
+		{
+			"Id": "ParamGroup11",
+			"GroupId": "",
+			"Name": "r_r_b_h"
+		},
+		{
+			"Id": "ParamGroup12",
+			"GroupId": "",
+			"Name": "mh_shadow"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Part10",
+			"Name": "可莉动画壁纸.psd(未找到对应图层)"
+		},
+		{
+			"Id": "l_t_h_Skinning",
+			"Name": "l_t_h(蒙皮)"
+		},
+		{
+			"Id": "Part",
+			"Name": "l_t_h(回转)"
+		},
+		{
+			"Id": "r_hc_Skinning",
+			"Name": "r_hc(蒙皮)"
+		},
+		{
+			"Id": "Part9",
+			"Name": "r_hc(回转)"
+		},
+		{
+			"Id": "l_f_h_Skinning",
+			"Name": "l_f_h(蒙皮)"
+		},
+		{
+			"Id": "Part2",
+			"Name": "l_f_h(回转)"
+		},
+		{
+			"Id": "m_h_Skinning",
+			"Name": "m_h(蒙皮)"
+		},
+		{
+			"Id": "Part3",
+			"Name": "m_h(回转)"
+		},
+		{
+			"Id": "l_b_h_Skinning",
+			"Name": "l_b_h(蒙皮)"
+		},
+		{
+			"Id": "Part5",
+			"Name": "l_b_h(回转)"
+		},
+		{
+			"Id": "l_l_b_h_Skinning",
+			"Name": "l_l_b_h(蒙皮)"
+		},
+		{
+			"Id": "Part8",
+			"Name": "l_l_b_h(回转)"
+		},
+		{
+			"Id": "r_f_h_Skinning",
+			"Name": "r_f_h(蒙皮)"
+		},
+		{
+			"Id": "Part4",
+			"Name": "r_f_h(回转)"
+		},
+		{
+			"Id": "r_b_h_Skinning",
+			"Name": "r_b_h(蒙皮)"
+		},
+		{
+			"Id": "Part11",
+			"Name": "r_b_h(回转)"
+		},
+		{
+			"Id": "Part6",
+			"Name": "r_b_h(回转)"
+		},
+		{
+			"Id": "r_r_b_h_Skinning",
+			"Name": "r_r_b_h(蒙皮)"
+		},
+		{
+			"Id": "Part12",
+			"Name": "r_r_b_h(回转)"
+		},
+		{
+			"Id": "Part7",
+			"Name": "r_r_b_h(回转)"
+		},
+		{
+			"Id": "mh_shadow_Skinning",
+			"Name": "mh_shadow(蒙皮)"
+		},
+		{
+			"Id": "Part13",
+			"Name": "mh_shadow(回转)"
+		},
+		{
+			"Id": "right_eye",
+			"Name": "right_eye"
+		},
+		{
+			"Id": "left_eye",
+			"Name": "left_eye"
+		}
+	]
+}
