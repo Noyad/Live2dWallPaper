@@ -1,8 +1,9 @@
-1920 1080 0 -90 1.2
+1920 1080 -80 -150 1.5
 Resources/
 sxwl.png
 icon_gear.png
 close.png
+yichui_2
 edu
 keli
 aidang_2
