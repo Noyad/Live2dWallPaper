@@ -4,11 +4,10 @@
 角色放大倍率= 1.5
 背景左右= 0 背景上下= 20
 Resources/
-bgpc.png
+sxwl.png
 icon_gear.png
 close.png
 yichui_2
 edu
 keli
-keli2
 aidang_2
