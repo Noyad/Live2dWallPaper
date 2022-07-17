@@ -66,6 +66,9 @@ namespace LAppDefine {
     extern csmInt32 RenderTargetWidth;
     extern csmInt32 RenderTargetHeight;
 
+    extern csmInt32 RenderWindowBiasX;
+    extern csmInt32 RenderWindowBiasY;
+
     extern csmInt32 RenderTargetBiasX;
     extern csmInt32 RenderTargetBiasY;
 
@@ -77,4 +80,6 @@ namespace LAppDefine {
     extern csmFloat32 RenderTargetSize;
 
     extern csmBool MouseMove;
+    //背景是否存在
+    extern csmBool HasBackground;
 }

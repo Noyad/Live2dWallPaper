@@ -154,16 +154,19 @@ void LAppView::InitializeSprite()
     float fWidth = 0.0f;
     float fHeight = 0.0f;
 
-    string imageName = resourcesPath + BackImageName;
-    LAppTextureManager::TextureInfo* backgroundTexture = textureManager->CreateTextureFromPngFile(imageName, false);
-    // ofstream outfile("f1.txt",ios::in);
-    // outfile << backgroundTexture->width << " " << backgroundTexture->height << endl;
-    // outfile.close();
-    x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
-    y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
-    fWidth = static_cast<float>(width);
-    fHeight = static_cast<float>(height);
-    _back = new LAppSprite(x, y, fWidth, fHeight, backgroundTexture->id);
+    string imageName;
+    if (LAppDefine::HasBackground) {
+        imageName = resourcesPath + BackImageName;
+        LAppTextureManager::TextureInfo* backgroundTexture = textureManager->CreateTextureFromPngFile(imageName, false);
+        // ofstream outfile("f1.txt",ios::in);
+        // outfile << backgroundTexture->width << " " << backgroundTexture->height << endl;
+        // outfile.close();
+        x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
+        y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
+        fWidth = static_cast<float>(width);
+        fHeight = static_cast<float>(height);
+        _back = new LAppSprite(x, y, fWidth, fHeight, backgroundTexture->id);
+    }
 
     imageName = resourcesPath + GearImageName;
     LAppTextureManager::TextureInfo* gearTexture = textureManager->CreateTextureFromPngFile(imageName, false);
@@ -224,8 +227,10 @@ void LAppView::ResizeSprite()
         LAppTextureManager::TextureInfo* texInfo = textureManager->GetTextureInfoById(id);
         if (texInfo)
         {
-            x = width * 0.5f;
-            y = height * 0.5f;
+            /*x = width * 0.5f;
+            y = height * 0.5f;*/
+            x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
+            y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
             fWidth = static_cast<float>(width);
             fHeight = static_cast<float>(height);
             _back->ResetRect(x, y, fWidth, fHeight);

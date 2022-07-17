@@ -74,8 +74,8 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
                 return 0;
             }
 
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 LAppDefine::MouseMove = false;
@@ -93,8 +93,8 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
                 return 0;
             }
 
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 if (s_instance->_captured)
@@ -109,8 +109,8 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
     case WM_MOUSEMOVE:
         if (s_instance != NULL)
         {
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 LAppDefine::MouseMove = true;
@@ -136,7 +136,10 @@ bool LAppDelegate::Initialize()
     ifstream infile("setting.txt",ios::in);
     string temp;
     infile >> temp >> temp;
-    infile >> temp >> LAppDefine::RenderTargetWidth >> temp >> LAppDefine::RenderTargetHeight >> temp >> LAppDefine::RenderTargetBiasX >> temp >> LAppDefine::RenderTargetBiasY >> temp >> LAppDefine::RenderTargetSize;
+    infile >> temp >> LAppDefine::RenderTargetWidth >> temp >> LAppDefine::RenderTargetHeight;
+    infile >> temp >> LAppDefine::RenderWindowBiasX >> temp >> LAppDefine::RenderWindowBiasY;
+    infile >> temp >> LAppDefine::RenderTargetBiasX >> temp >> LAppDefine::RenderTargetBiasY >> temp >> LAppDefine::RenderTargetSize;
+    infile >> temp >> LAppDefine::HasBackground;
     infile >> temp >> LAppDefine::RenderBackgroundBiasX >> temp >> LAppDefine::RenderBackgroundBiasY;
 
     infile >> LAppDefine::ResourcesPath;
@@ -178,11 +181,12 @@ bool LAppDelegate::Initialize()
         // rect.left = 0;
     }
     //ウインドウの生成
-    _windowHandle = CreateWindow(ClassName, ClassName,
-        WS_POPUP | WS_VISIBLE,
-        CW_USEDEFAULT, CW_USEDEFAULT, LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight, NULL, NULL, _windowClass.hInstance, NULL);
+    _windowHandle = CreateWindowEx(WS_EX_LAYERED, ClassName, ClassName,
+        WS_POPUP,
+        LAppDefine::RenderWindowBiasX, -LAppDefine::RenderWindowBiasY, LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight, NULL, NULL, _windowClass.hInstance, NULL);
+    SetLayeredWindowAttributes(_windowHandle, 0, 100, LWA_COLORKEY);
 
-    HWND windowHandle = FindWindow("Progman", nullptr);
+    /*HWND windowHandle = FindWindow("Progman", nullptr);
     //使用 0x3e8 命令分割出两个 WorkerW
     SendMessageTimeout(windowHandle, 0x052c, 0, 0, SMTO_NORMAL, 0x3e8, NULL);
     HWND background = NULL;
@@ -195,7 +199,7 @@ bool LAppDelegate::Initialize()
         }
     }while(worker !=NULL);
     //HWND current = (HWND)_windowHandle->winId();
-    SetParent(_windowHandle,background);
+    SetParent(_windowHandle,background);*/
     
     if(_windowHandle==NULL)
     {

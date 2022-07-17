@@ -72,6 +72,10 @@ namespace LAppDefine {
     csmInt32 RenderTargetWidth = 1920;
     csmInt32 RenderTargetHeight = 1080;
 
+    //窗口偏移
+    csmInt32 RenderWindowBiasX = 0;
+    csmInt32 RenderWindowBiasY = 0;
+
     //Live2dModel显示偏移值
     csmInt32 RenderTargetBiasX = 0;
     csmInt32 RenderTargetBiasY = 20;
@@ -85,4 +89,7 @@ namespace LAppDefine {
     csmFloat32 RenderTargetSize = 1;
 
     csmBool MouseMove = false;
+
+    //背景是否存在
+    csmBool HasBackground = true;
 }
