@@ -18,11 +18,14 @@ namespace LAppDefine {
     using namespace std;
     using namespace Csm;
 
+    extern const csmFloat32 ViewScale;              ///< 拡大縮小率
     extern const csmFloat32 ViewMaxScale;           ///< 拡大縮小率の最大値
     extern const csmFloat32 ViewMinScale;           ///< 拡大縮小率の最小値
 
     extern const csmFloat32 ViewLogicalLeft;        ///< 論理的なビュー座標系の左端の値
     extern const csmFloat32 ViewLogicalRight;       ///< 論理的なビュー座標系の右端の値
+    extern const csmFloat32 ViewLogicalBottom;        ///< 論理的なビュー座標系の下端の値
+    extern const csmFloat32 ViewLogicalTop;       ///< 論理的なビュー座標系の上端の値
 
     extern const csmFloat32 ViewLogicalMaxLeft;     ///< 論理的なビュー座標系の左端の最大値
     extern const csmFloat32 ViewLogicalMaxRight;    ///< 論理的なビュー座標系の右端の最大値
@@ -43,11 +46,17 @@ namespace LAppDefine {
     extern const csmChar* MotionGroupTapHead;
     extern const csmChar* MotionGroupTapBody;       ///< 体をタップした時に再生するモーションのリスト
     extern const csmChar* MotionGroupTapSpecial;
+    extern const csmChar* MotionGroupTouchDrag1;
+    extern const csmChar* MotionGroupTouchDrag2;
+    extern const csmChar* MotionGroupTouchDrag3;
 
                                                     // 外部定義ファイル(json)と合わせる
     extern const csmChar* HitAreaNameHead;          ///< 当たり判定の[Head]タグ
     extern const csmChar* HitAreaNameBody;          ///< 当たり判定の[Body]タグ
     extern const csmChar* HitAreaNameSpecial;
+    extern const csmChar* HitAreaNameDrag1;
+    extern const csmChar* HitAreaNameDrag2;
+    extern const csmChar* HitAreaNameDrag3;
 
                                                     // モーションの優先度定数
     extern const csmInt32 PriorityNone;             ///< モーションの優先度定数: 0
@@ -66,6 +75,9 @@ namespace LAppDefine {
     extern csmInt32 RenderTargetWidth;
     extern csmInt32 RenderTargetHeight;
 
+    extern csmInt32 RenderWindowBiasX;
+    extern csmInt32 RenderWindowBiasY;
+
     extern csmInt32 RenderTargetBiasX;
     extern csmInt32 RenderTargetBiasY;
 
@@ -77,4 +89,6 @@ namespace LAppDefine {
     extern csmFloat32 RenderTargetSize;
 
     extern csmBool MouseMove;
+    //背景是否存在
+    extern csmBool HasBackground;
 }

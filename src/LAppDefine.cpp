@@ -15,11 +15,14 @@ namespace LAppDefine {
     using namespace Csm;
 
     // 画面
-    const csmFloat32 ViewMaxScale = 4.0f;
-    const csmFloat32 ViewMinScale = 0.4f;
+    const csmFloat32 ViewScale = 1.0f;
+    const csmFloat32 ViewMaxScale = 2.0f;
+    const csmFloat32 ViewMinScale = 0.8f;
 
     const csmFloat32 ViewLogicalLeft = -1.0f;
     const csmFloat32 ViewLogicalRight = 1.0f;
+    const csmFloat32 ViewLogicalBottom = -1000.0f;
+    const csmFloat32 ViewLogicalTop = -100.0f;
 
     const csmFloat32 ViewLogicalMaxLeft = -2.0f;
     const csmFloat32 ViewLogicalMaxRight = 2.0f;
@@ -49,11 +52,17 @@ namespace LAppDefine {
     const csmChar* MotionGroupTapHead = "TouchHead";
     const csmChar* MotionGroupTapBody = "TouchBody"; // 体をタップしたとき
     const csmChar* MotionGroupTapSpecial = "TouchSpecial"; // 体をタップしたとき
+    const csmChar* MotionGroupTouchDrag1 = "TouchDrag1";
+    const csmChar* MotionGroupTouchDrag2 = "TouchDrag2";
+    const csmChar* MotionGroupTouchDrag3 = "TouchDrag3";
 
     // 外部定義ファイル(json)と合わせる
     const csmChar* HitAreaNameHead = "Head";
     const csmChar* HitAreaNameBody = "Body";
     const csmChar* HitAreaNameSpecial = "Special";
+    const csmChar* HitAreaNameDrag1 = "Drag1";
+    const csmChar* HitAreaNameDrag2 = "Drag2";
+    const csmChar* HitAreaNameDrag3 = "Drag3";
 
     // モーションの優先度定数
     const csmInt32 PriorityNone = 0;
@@ -72,6 +81,10 @@ namespace LAppDefine {
     csmInt32 RenderTargetWidth = 1920;
     csmInt32 RenderTargetHeight = 1080;
 
+    //窗口偏移
+    csmInt32 RenderWindowBiasX = 0;
+    csmInt32 RenderWindowBiasY = 0;
+
     //Live2dModel显示偏移值
     csmInt32 RenderTargetBiasX = 0;
     csmInt32 RenderTargetBiasY = 20;
@@ -85,4 +98,7 @@ namespace LAppDefine {
     csmFloat32 RenderTargetSize = 1;
 
     csmBool MouseMove = false;
+
+    //背景是否存在
+    csmBool HasBackground = true;
 }

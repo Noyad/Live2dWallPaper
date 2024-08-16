@@ -6,7 +6,7 @@
  */
 
 #include <windows.h>
-//#include <QtWidgets/QApplication>
+
 #include "LAppDelegate.hpp"
 
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)

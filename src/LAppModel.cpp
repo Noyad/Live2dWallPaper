@@ -98,13 +98,19 @@ void LAppModel::LoadAssets(const csmChar* dir, const csmChar* fileName)
 
     csmSizeInt size;
     const csmString path = csmString(dir) + fileName;
-    csmByte* buffer = CreateBuffer(path.GetRawString(), &size);
 
+    csmByte* buffer = CreateBuffer(path.GetRawString(), &size);
     ICubismModelSetting* setting = new CubismModelSettingJson(buffer, size);
     DeleteBuffer(buffer, path.GetRawString());
 
     SetupModel(setting);
-    
+
+    if (_model == NULL)
+    {
+        LAppPal::PrintLog("Failed to LoadAssets().");
+        return;
+    }
+
     CreateRenderer();
 
     SetupTextures();
@@ -232,6 +238,12 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         }
     }
 
+    if (_modelSetting == NULL || _modelMatrix == NULL)
+    {
+        LAppPal::PrintLog("Failed to SetupModel().");
+        return;
+    }
+
     //Layout
     csmMap<csmString, csmFloat32> layout;
     _modelSetting->GetLayoutMap(layout);
@@ -241,11 +253,10 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
 
     for (csmInt32 i = 0; i < _modelSetting->GetMotionGroupCount(); i++)
     {
-        if (TRUE) {
-            const csmChar* group = _modelSetting->GetMotionGroupName(i);
-            PreloadMotionGroup(group);
-        }
+        const csmChar* group = _modelSetting->GetMotionGroupName(i);
+        PreloadMotionGroup(group);
     }
+
     _motionManager->StopAllMotions();
 
     _updating = false;
@@ -399,7 +410,12 @@ void LAppModel::Update()
     // リップシンクの設定
     if (_lipSync)
     {
-        csmFloat32 value = 0; // リアルタイムでリップシンクを行う場合、システムから音量を取得して0〜1の範囲で値を入力します。
+        // リアルタイムでリップシンクを行う場合、システムから音量を取得して0〜1の範囲で値を入力します。
+        csmFloat32 value = 0.0f;
+
+        // 状態更新/RMS値取得
+        _wavFileHandler.Update(deltaTimeSeconds);
+        value = _wavFileHandler.GetRms();
 
         for (csmUint32 i = 0; i < _lipSyncIds.GetSize(); ++i)
         {
@@ -475,6 +491,7 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
     {
         csmString path = voice;
         path = _modelHomeDir + path;
+        _wavFileHandler.Start(path);
     }
 
     if (_debugMode)

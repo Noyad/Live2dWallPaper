@@ -25,6 +25,7 @@ class LAppTextureManager;
 class LAppDelegate
 {
 public:
+    HWND                    _windowHandle;  ///< ウィンドウハンドル
     LAppView* _view;                             ///< View情報
     float _mouseX;                               ///< マウスX座標
     float _mouseY;                               ///< マウスY座標
@@ -167,7 +168,6 @@ private:
     bool _isEnd;                                 ///< APP終了しているか
     LAppTextureManager* _textureManager;         ///< テクスチャマネージャー
 
-    HWND                    _windowHandle;  ///< ウィンドウハンドル
     ID3D11Device*           _device;        ///< D3Dデバイス
     ID3D11DeviceContext*    _deviceContext; ///< D3D描画コンテキスト
     IDXGISwapChain*         _swapChain;     ///< スワップチェーン

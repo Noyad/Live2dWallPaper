@@ -23,7 +23,7 @@
 using namespace std;
 using namespace LAppDefine;
 
-LAppView::LAppView() :
+LAppView::LAppView():
     _back(NULL),
     _gear(NULL),
     _power(NULL),
@@ -63,7 +63,7 @@ void LAppView::Initialize()
     int width, height;
     LAppDelegate::GetClientSize(width, height);
 
-    if (width == 0 || height == 0)
+    if(width==0 || height==0)
     {
         return;
     }
@@ -79,7 +79,7 @@ void LAppView::Initialize()
     float screenW = fabsf(left - right);
     _deviceToScreen->LoadIdentity(); // サイズが変わった際などリセット必須
     _deviceToScreen->ScaleRelative(screenW / width / LAppDefine::RenderTargetSize, -screenW / width / LAppDefine::RenderTargetSize);
-    _deviceToScreen->TranslateRelative(-(width + RenderTargetBiasX) * 0.5f, -(height - RenderTargetBiasY) * 0.5f);
+    _deviceToScreen->TranslateRelative(-(width + LAppDefine::RenderTargetBiasX) * 0.5f, -(height - LAppDefine::RenderTargetBiasY) * 0.5f);
 
     // 表示範囲の設定
     _viewMatrix->SetMaxScale(ViewMaxScale); // 限界拡大率
@@ -119,18 +119,20 @@ void LAppView::Render()
         _power->Render(width, height);
     }
 
+    live2DManager->SetViewMatrix(_viewMatrix);
+
     // Cubism更新・描画
     live2DManager->OnUpdate();
 
     // 各モデルが持つ描画ターゲットをテクスチャとする場合
     if (_renderTarget == SelectTarget_ModelFrameBuffer && _renderSprite)
     {
-        for (csmUint32 i = 0; i < live2DManager->GetModelNum(); i++)
+        for(csmUint32 i=0; i<live2DManager->GetModelNum(); i++)
         {
             float alpha = GetSpriteAlpha(i); // サンプルとしてαに適当な差をつける
             _renderSprite->SetColor(1.0f, 1.0f, 1.0f, alpha);
 
-            LAppModel* model = live2DManager->GetModel(i);
+            LAppModel *model = live2DManager->GetModel(i);
             if (model)
             {
                 _renderSprite->RenderImmidiate(width, height, model->GetRenderBuffer().GetTextureView());
@@ -154,16 +156,19 @@ void LAppView::InitializeSprite()
     float fWidth = 0.0f;
     float fHeight = 0.0f;
 
-    string imageName = resourcesPath + BackImageName;
-    LAppTextureManager::TextureInfo* backgroundTexture = textureManager->CreateTextureFromPngFile(imageName, false);
-    // ofstream outfile("f1.txt",ios::in);
-    // outfile << backgroundTexture->width << " " << backgroundTexture->height << endl;
-    // outfile.close();
-    x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
-    y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
-    fWidth = static_cast<float>(width);
-    fHeight = static_cast<float>(height);
-    _back = new LAppSprite(x, y, fWidth, fHeight, backgroundTexture->id);
+    string imageName;
+    if (LAppDefine::HasBackground) {
+        imageName = resourcesPath + LAppDefine::BackImageName;
+        LAppTextureManager::TextureInfo* backgroundTexture = textureManager->CreateTextureFromPngFile(imageName, false);
+        // ofstream outfile("f1.txt",ios::in);
+        // outfile << backgroundTexture->width << " " << backgroundTexture->height << endl;
+        // outfile.close();
+        x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
+        y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
+        fWidth = static_cast<float>(width);
+        fHeight = static_cast<float>(height);
+        _back = new LAppSprite(x, y, fWidth, fHeight, backgroundTexture->id);
+    }
 
     imageName = resourcesPath + GearImageName;
     LAppTextureManager::TextureInfo* gearTexture = textureManager->CreateTextureFromPngFile(imageName, false);
@@ -218,14 +223,16 @@ void LAppView::ResizeSprite()
     float fWidth = 0.0f;
     float fHeight = 0.0f;
 
-    if (_back)
+    if(_back)
     {
         Csm::csmUint64 id = _back->GetTextureId();
         LAppTextureManager::TextureInfo* texInfo = textureManager->GetTextureInfoById(id);
-        if (texInfo)
+        if(texInfo)
         {
-            x = width * 0.5f;
-            y = height * 0.5f;
+            /*x = width * 0.5f;
+            y = height * 0.5f;*/
+            x = static_cast<float>(width * 0.5f + LAppDefine::RenderBackgroundBiasX);
+            y = static_cast<float>(height * 0.5f + LAppDefine::RenderBackgroundBiasY);
             fWidth = static_cast<float>(width);
             fHeight = static_cast<float>(height);
             _back->ResetRect(x, y, fWidth, fHeight);
@@ -280,8 +287,12 @@ void LAppView::OnTouchesMoved(float px, float py) const
 
     _touchManager->TouchesMoved(px, py);
 
+    // シングルタップ
+    float x = _deviceToScreen->TransformX(px); // 論理座標変換した座標を取得。
+    float y = _deviceToScreen->TransformY(py); // 論理座標変換した座標を取得。
+    //LAppPal::PrintLog("[APP]touchesEnded x:%.2f y:%.2f", x, y);
     LAppLive2DManager* live2DManager = LAppLive2DManager::GetInstance();
-    live2DManager->OnDrag(viewX, viewY);
+    live2DManager->OnDrag(x, y);
 }
 
 void LAppView::OnTouchesEnded(float px, float py) const

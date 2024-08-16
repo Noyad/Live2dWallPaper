@@ -74,8 +74,8 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
                 return 0;
             }
 
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 LAppDefine::MouseMove = false;
@@ -93,13 +93,13 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
                 return 0;
             }
 
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 if (s_instance->_captured)
                 {
-                    // s_instance->_captured = false;
+                    s_instance->_captured = false;
                     s_instance->_view->OnTouchesEnded(s_instance->_mouseX, s_instance->_mouseY);
                 }
             }
@@ -109,8 +109,8 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
     case WM_MOUSEMOVE:
         if (s_instance != NULL)
         {
-            s_instance->_mouseX = static_cast<float>(LOWORD(lParam));
-            s_instance->_mouseY = static_cast<float>(HIWORD(lParam));
+            s_instance->_mouseX = static_cast<float>(LOWORD(lParam) - LAppDefine::RenderWindowBiasX);
+            s_instance->_mouseY = static_cast<float>(HIWORD(lParam) + LAppDefine::RenderWindowBiasY);
 
             {
                 LAppDefine::MouseMove = true;
@@ -126,6 +126,16 @@ LRESULT CALLBACK HookShoot(_In_ int nCode, _In_ WPARAM wParam, LPARAM lParam) {
         }
         return 0;
 
+    case WM_TIMER:
+        /*BLENDFUNCTION blend;
+        blend.BlendOp = AC_SRC_OVER;
+        blend.BlendFlags = 0;
+        blend.AlphaFormat = 0;
+        blend.SourceConstantAlpha = 255;
+        
+        UpdateLayeredWindow(s_instance->_windowHandle, NULL, NULL, NULL, NULL, NULL, NULL, &blend, ULW_ALPHA);*/
+        break;
+
     default:
         break;
     }
@@ -136,7 +146,10 @@ bool LAppDelegate::Initialize()
     ifstream infile("setting.txt",ios::in);
     string temp;
     infile >> temp >> temp;
-    infile >> temp >> LAppDefine::RenderTargetWidth >> temp >> LAppDefine::RenderTargetHeight >> temp >> LAppDefine::RenderTargetBiasX >> temp >> LAppDefine::RenderTargetBiasY >> temp >> LAppDefine::RenderTargetSize;
+    infile >> temp >> LAppDefine::RenderTargetWidth >> temp >> LAppDefine::RenderTargetHeight;
+    infile >> temp >> LAppDefine::RenderWindowBiasX >> temp >> LAppDefine::RenderWindowBiasY;
+    infile >> temp >> LAppDefine::RenderTargetBiasX >> temp >> LAppDefine::RenderTargetBiasY >> temp >> LAppDefine::RenderTargetSize;
+    infile >> temp >> LAppDefine::HasBackground;
     infile >> temp >> LAppDefine::RenderBackgroundBiasX >> temp >> LAppDefine::RenderBackgroundBiasY;
 
     infile >> LAppDefine::ResourcesPath;
@@ -178,11 +191,19 @@ bool LAppDelegate::Initialize()
         // rect.left = 0;
     }
     //ウインドウの生成
-    _windowHandle = CreateWindow(ClassName, ClassName,
-        WS_POPUP | WS_VISIBLE,
-        CW_USEDEFAULT, CW_USEDEFAULT, LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight, NULL, NULL, _windowClass.hInstance, NULL);
+    _windowHandle = CreateWindowEx(WS_EX_LAYERED, ClassName, ClassName,
+        WS_POPUP,
+        LAppDefine::RenderWindowBiasX, -LAppDefine::RenderWindowBiasY, LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight, NULL, NULL, _windowClass.hInstance, NULL);
+    //SetWindowLong(_windowHandle, GWL_STYLE, WS_MINIMIZEBOX | WS_SYSMENU);
+    SetWindowPos(_windowHandle, HWND_TOPMOST, 
+        LAppDefine::RenderWindowBiasX, -LAppDefine::RenderWindowBiasY, LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight, SWP_NOMOVE | SWP_NOSIZE);
+    //SetLayeredWindowAttributes(_windowHandle, 0, 254, LWA_ALPHA | LWA_COLORKEY);
 
-    HWND windowHandle = FindWindow("Progman", nullptr);
+    //SetLayeredWindowAttributes(_windowHandle, 0x000000, 0, LWA_COLORKEY);
+
+
+    //setcolor
+    /*HWND windowHandle = FindWindow("Progman", nullptr);
     //使用 0x3e8 命令分割出两个 WorkerW
     SendMessageTimeout(windowHandle, 0x052c, 0, 0, SMTO_NORMAL, 0x3e8, NULL);
     HWND background = NULL;
@@ -195,7 +216,7 @@ bool LAppDelegate::Initialize()
         }
     }while(worker !=NULL);
     //HWND current = (HWND)_windowHandle->winId();
-    SetParent(_windowHandle,background);
+    SetParent(_windowHandle,background);*/
     
     if(_windowHandle==NULL)
     {
@@ -213,14 +234,14 @@ bool LAppDelegate::Initialize()
     _presentParameters.BufferCount = BackBufferNum;
     _presentParameters.BufferDesc.Width = LAppDefine::RenderTargetWidth;
     _presentParameters.BufferDesc.Height = LAppDefine::RenderTargetHeight;
-    _presentParameters.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM; //DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;//碧蓝航线 //DXGI_FORMAT_B8G8R8A8_UNORM 原神可莉
+    _presentParameters.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB; //DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;//碧蓝航线 //DXGI_FORMAT_B8G8R8A8_UNORM 原神可莉
     _presentParameters.BufferDesc.RefreshRate.Numerator = 60;
     _presentParameters.BufferDesc.RefreshRate.Denominator = 1;
     _presentParameters.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
     _presentParameters.SampleDesc.Count = 1;
     _presentParameters.SampleDesc.Quality = 0;
     _presentParameters.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-    _presentParameters.Flags = 0;
+    _presentParameters.Flags = DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE;
     _presentParameters.Windowed = TRUE;
     _presentParameters.OutputWindow = _windowHandle;
 
@@ -310,6 +331,8 @@ bool LAppDelegate::Initialize()
 
     // Cubism SDK の初期化
     InitializeCubism();
+
+
     isHover = true;
     hook = SetWindowsHookEx(WH_MOUSE_LL, HookShoot, GetModuleHandle(NULL), 0);
     return true;
@@ -471,9 +494,26 @@ void LAppDelegate::Run()
             // 描画
             _view->Render();
 
+
+            Microsoft::WRL::ComPtr<IDXGISurface1>surface;
+            _swapChain->GetBuffer(0, IID_PPV_ARGS(&surface));
+            HDC hdcSurface, hdcScreen = GetDC(_windowHandle);
+            surface->GetDC(FALSE, &hdcSurface);
+
+            BLENDFUNCTION blend = { 0 };
+            blend.BlendFlags = 0;
+            blend.BlendOp = AC_SRC_OVER;
+            blend.SourceConstantAlpha = 254;
+            blend.AlphaFormat = AC_SRC_ALPHA;
+            POINT ptPos = { 0, 0 };
+            SIZE sizeWnd = { LAppDefine::RenderTargetWidth, LAppDefine::RenderTargetHeight };
+            POINT ptSrc = { 0, 0 };
+            UpdateLayeredWindow(_windowHandle, hdcScreen, NULL, &sizeWnd, hdcSurface, &ptSrc, 0, &blend, ULW_ALPHA);
+            surface->ReleaseDC(NULL);
+            ReleaseDC(_windowHandle, hdcScreen);
+
             // フレーム末端処理
             EndFrame();
-
             // アプリケーション終了メッセージでウィンドウを破棄する
             if (GetIsEnd() && _windowHandle!=NULL)
             {// ウィンドウ破壊
@@ -778,7 +818,7 @@ void LAppDelegate::StartFrame()
     }
 
     // バックバッファのクリア
-    float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+    float clearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
     _deviceContext->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
     _deviceContext->ClearRenderTargetView(_renderTargetView, clearColor);
     _deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);

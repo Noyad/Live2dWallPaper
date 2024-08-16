@@ -55,6 +55,8 @@ LAppLive2DManager::LAppLive2DManager()
     : _viewMatrix(NULL)
     , _sceneIndex(0)
 {
+    _viewMatrix = new CubismMatrix44();
+
     ChangeScene(_sceneIndex);
 }
 
@@ -121,7 +123,31 @@ void LAppLive2DManager::OnTap(csmFloat32 x, csmFloat32 y)
     }
     for (csmUint32 i = 0; i < _models.GetSize(); i++)
     {
-        if (_models[i]->HitTest(HitAreaNameSpecial, x, y))
+        if (_models[i]->HitTest(HitAreaNameDrag1, x, y))
+        {
+            if (DebugLogEnable)
+            {
+                LAppPal::PrintLog("[APP]hit area: [%s]", HitAreaNameDrag1);
+            }
+            _models[i]->StartRandomMotion(MotionGroupTapBody, PriorityNormal, FinishedMotion);
+        }
+        else if (_models[i]->HitTest(HitAreaNameDrag2, x, y))
+        {
+            if (DebugLogEnable)
+            {
+                LAppPal::PrintLog("[APP]hit area: [%s]", HitAreaNameDrag2);
+            }
+            _models[i]->StartRandomMotion(MotionGroupTapBody, PriorityNormal, FinishedMotion);
+        }
+        else if (_models[i]->HitTest(HitAreaNameDrag3, x, y))
+        {
+            if (DebugLogEnable)
+            {
+                LAppPal::PrintLog("[APP]hit area: [%s]", HitAreaNameDrag3);
+            }
+            return;
+        }
+        else if (_models[i]->HitTest(HitAreaNameSpecial, x, y))
         {
             if (DebugLogEnable)
             {
@@ -153,30 +179,40 @@ void LAppLive2DManager::OnUpdate() const
     int windowWidth, windowHeight;
     LAppDelegate::GetInstance()->GetClientSize(windowWidth, windowHeight);
 
-    // 投影用マトリックス
-    CubismMatrix44 projection = CubismMatrix44();
-    if (windowWidth != 0 && windowHeight != 0)
-    {
-        projection.Scale(RenderTargetSize, static_cast<float>(windowWidth) / static_cast<float>(windowHeight) * RenderTargetSize);
-    }
-    projection.Translate(static_cast<Live2D::Cubism::Framework::csmFloat32>(RenderTargetBiasX) / RenderTargetWidth, static_cast<Live2D::Cubism::Framework::csmFloat32>(RenderTargetBiasY) / RenderTargetHeight);
-
-    // 必要があればここで乗算
-    if (_viewMatrix != NULL)
-    {
-        projection.MultiplyByMatrix(_viewMatrix);
-    }
-
     // D3D11 フレーム先頭処理
     // 各フレームでの、Cubism SDK の処理前にコール
     Rendering::CubismRenderer_D3D11::StartFrame(LAppDelegate::GetInstance()->GetD3dDevice(), LAppDelegate::GetInstance()->GetD3dContext(), windowWidth, windowHeight);
 
-    const CubismMatrix44 saveProjection = projection;
     const csmUint32 modelCount = _models.GetSize();
     for (csmUint32 i = 0; i < modelCount; ++i)
     {
+        // 投影用マトリックス
+        CubismMatrix44 projection;
         LAppModel* model = GetModel(i);
-        projection = saveProjection;
+
+        if (model->GetModel() == NULL)
+        {
+            LAppPal::PrintLog("Failed to model->GetModel().");
+            continue;
+        }
+
+        if (model->GetModel()->GetCanvasWidth() > 1.0f && windowWidth < windowHeight)
+        {
+            // 横に長いモデルを縦長ウィンドウに表示する際モデルの横サイズでscaleを算出する
+            model->GetModelMatrix()->SetWidth(2.0f);
+        	projection.Scale(RenderTargetSize, static_cast<float>(windowWidth) / static_cast<float>(windowHeight) * RenderTargetSize);
+        }
+        else
+        {
+            projection.Scale(static_cast<float>(windowHeight) / static_cast<float>(windowWidth) * RenderTargetSize, RenderTargetSize);
+        }
+        projection.Translate(static_cast<Live2D::Cubism::Framework::csmFloat32>(RenderTargetBiasX) / RenderTargetWidth, static_cast<Live2D::Cubism::Framework::csmFloat32>(RenderTargetBiasY) / RenderTargetHeight);
+
+        // 必要があればここで乗算
+        if (_viewMatrix != NULL)
+        {
+            projection.MultiplyByMatrix(_viewMatrix);
+        }
 
         // モデル1体描画前コール
         LAppDelegate::GetInstance()->GetView()->PreModelDraw(*model);
@@ -219,6 +255,7 @@ void LAppLive2DManager::ChangeScene(Csm::csmInt32 index)
     ReleaseAllModel();
     _models.PushBack(new LAppModel());
     _models[0]->LoadAssets(modelPath.c_str(), modelJsonName.c_str());
+
     /*
      * モデル半透明表示を行うサンプルを提示する。
      * ここでUSE_RENDER_TARGET、USE_MODEL_RENDER_TARGETが定義されている場合
@@ -282,5 +319,12 @@ void LAppLive2DManager::ResizedWindow()
     for (csmUint32 i = 0; i < modelCount; ++i)
     {
         _models[i]->GetRenderBuffer().DestroyOffscreenFrame();
+    }
+}
+
+void LAppLive2DManager::SetViewMatrix(CubismMatrix44* m)
+{
+    for (int i = 0; i < 16; i++) {
+        _viewMatrix->GetArray()[i] = m->GetArray()[i];
     }
 }
