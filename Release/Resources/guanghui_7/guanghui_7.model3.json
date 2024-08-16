@@ -1,0 +1,342 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "guanghui_7.moc3",
+    "Textures": [
+      "textures/texture_00.png"
+    ],
+    "Physics": "guanghui_7.physics3.json",
+    "Motions": {
+      "TouchHead": [
+        {
+          "File": "motions/touch_head.motion3.json"
+        }
+      ],
+      "Idle": [
+        {
+          "File": "motions/idle.motion3.json"
+        }
+      ],
+      "TouchSpecial": [
+        {
+          "File": "motions/touch_special.motion3.json"
+        }
+      ],
+      "TouchBody": [
+        {
+          "File": "motions/touch_body.motion3.json"
+        }
+      ],
+      "": [
+        {
+          "File": "motions/idle6.motion3.json"
+        },
+        {
+          "File": "motions/main_3.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle4.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag8.motion3.json"
+        },
+        {
+          "File": "motions/main_1.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle1.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle13.motion3.json"
+        },
+        {
+          "File": "motions/wedding.motion3.json"
+        },
+        {
+          "File": "motions/idle7.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle5.motion3.json"
+        },
+        {
+          "File": "motions/idle9.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag9.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag14.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag6.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag3.motion3.json"
+        },
+        {
+          "File": "motions/home.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag12.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle11.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag5.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle9.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag1.motion3.json"
+        },
+        {
+          "File": "motions/idle5.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle6.motion3.json"
+        },
+        {
+          "File": "motions/complete.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle12.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle7.motion3.json"
+        },
+        {
+          "File": "motions/mission.motion3.json"
+        },
+        {
+          "File": "motions/idle1.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle10.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag13.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag11.motion3.json"
+        },
+        {
+          "File": "motions/effect.motion3.json"
+        },
+        {
+          "File": "motions/idle4.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle8.motion3.json"
+        },
+        {
+          "File": "motions/idle3.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag10.motion3.json"
+        },
+        {
+          "File": "motions/idle8.motion3.json"
+        },
+        {
+          "File": "motions/mission_complete.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle2.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag2.motion3.json"
+        },
+        {
+          "File": "motions/main_2.motion3.json"
+        },
+        {
+          "File": "motions/mail.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag4.motion3.json"
+        },
+        {
+          "File": "motions/idle2.motion3.json"
+        },
+        {
+          "File": "motions/touch_drag7.motion3.json"
+        },
+        {
+          "File": "motions/login.motion3.json"
+        },
+        {
+          "File": "motions/touch_idle3.motion3.json"
+        }
+      ]
+    }
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ],
+  "HitAreas": [
+    {
+      "Id": "TouchDrag14",
+      "Name": "Drag14"
+    },
+    {
+      "Id": "TouchIdle10",
+      "Name": "Idle10"
+    },
+    {
+      "Id": "TouchIdle8",
+      "Name": "Idle8"
+    },
+    {
+      "Id": "TouchDrag3",
+      "Name": "Drag3"
+    },
+    {
+      "Id": "TouchIdle13",
+      "Name": "Idle13"
+    },
+    {
+      "Id": "TouchDrag2",
+      "Name": "Drag2"
+    },
+    {
+      "Id": "TouchIdle9",
+      "Name": "Idle9"
+    },
+    {
+      "Id": "TouchBody",
+      "Name": "Body"
+    },
+    {
+      "Id": "TouchDrag9",
+      "Name": "Drag9"
+    },
+    {
+      "Id": "TouchIdle5",
+      "Name": "Idle5"
+    },
+    {
+      "Id": "TouchHead",
+      "Name": "Head"
+    },
+    {
+      "Id": "TouchDrag7",
+      "Name": "Drag7"
+    },
+    {
+      "Id": "TouchIdle2",
+      "Name": "Idle2"
+    },
+    {
+      "Id": "TouchDrag5",
+      "Name": "Drag5"
+    },
+    {
+      "Id": "TouchIdle1",
+      "Name": "Idle1"
+    },
+    {
+      "Id": "TouchDrag12",
+      "Name": "Drag12"
+    },
+    {
+      "Id": "TouchIdle",
+      "Name": "Idle"
+    },
+    {
+      "Id": "TouchIdle11",
+      "Name": "Idle11"
+    },
+    {
+      "Id": "TouchDrag6",
+      "Name": "Drag6"
+    },
+    {
+      "Id": "TouchDrag15",
+      "Name": "Drag15"
+    },
+    {
+      "Id": "TouchIdle4",
+      "Name": "Idle4"
+    },
+    {
+      "Id": "TouchIdle12",
+      "Name": "Idle12"
+    },
+    {
+      "Id": "TouchIdle3",
+      "Name": "Idle3"
+    },
+    {
+      "Id": "TouchDrag4",
+      "Name": "Drag4"
+    },
+    {
+      "Id": "TouchDrag11",
+      "Name": "Drag11"
+    },
+    {
+      "Id": "TouchIdle6",
+      "Name": "Idle6"
+    },
+    {
+      "Id": "TouchDrag1",
+      "Name": "Drag1"
+    },
+    {
+      "Id": "TouchSpecial",
+      "Name": "Special"
+    },
+    {
+      "Id": "TouchDrag10",
+      "Name": "Drag10"
+    },
+    {
+      "Id": "TouchIdle7",
+      "Name": "Idle7"
+    },
+    {
+      "Id": "TouchDrag13",
+      "Name": "Drag13"
+    }
+  ],
+  "Looks": [
+    {
+      "Id": "ParamAngleX",
+      "Axis": 0,
+      "Factor": 30.0
+    },
+    {
+      "Id": "ParamBodyAngleY",
+      "Axis": 1,
+      "Factor": 10.0
+    },
+    {
+      "Id": "ParamEyeBallX",
+      "Axis": 0,
+      "Factor": 1.0
+    },
+    {
+      "Id": "ParamBodyAngleX",
+      "Axis": 0,
+      "Factor": 10.0
+    },
+    {
+      "Id": "ParamAngleY",
+      "Axis": 1,
+      "Factor": 30.0
+    },
+    {
+      "Id": "ParamEyeBallY",
+      "Axis": 1,
+      "Factor": 1.0
+    }
+  ]
+}
